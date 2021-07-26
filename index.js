@@ -2,8 +2,9 @@ require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
+
 const dbConnect = require("./config/mongodb-connection");
-const myProjectRoutes = require("./routes/myProjects.routes")
+const myProjectRoutes = require("./routes/myProjects.routes");
 
 const server = express();
 const port = process.env.PORT;
@@ -15,6 +16,13 @@ server.use(express.urlencoded({
     extended: true
 }));
 
+// middleware:
+
+// create connection
+dbConnect();
+
+//routes should COME AFTER db connect
+
 //installing routes
 server.use('/projects', myProjectRoutes);
 
@@ -24,12 +32,6 @@ server.get('/', function(req,res){
         message: "Server is running"
     })
 })
-
-
-// middleware:
-
-// create connection
-dbConnect();
 
 
 

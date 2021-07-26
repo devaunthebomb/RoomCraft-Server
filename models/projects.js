@@ -1,12 +1,12 @@
 const mongoose = require("mongoose");
 
 const schema = new mongoose.Schema({
-    projectName: String,
-    imageUrl: String,
-    projectDescription: String,
-    projectTag: String,
-    itemsPlacedInRoom: Number,
-    projectNumber: Number
+    projectName: {
+        type: String
+    },
+    imageUrl: {
+        type: String
+    }
 }, {timestamps: true})
 
 module.exports = mongoose.model("MyProjects", schema);
